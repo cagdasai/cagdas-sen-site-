@@ -16,38 +16,32 @@ const NEBIM_PREVIEW_COUNT = 14;
 export default function Home() {
   const wa = whatsappUrl();
   const waActive = wa.startsWith("http");
-  const [lang, setLang] = useState("tr");
-  const en = lang === "en";
   const [showAllNebim, setShowAllNebim] = useState(false);
   const nebimVisible = showAllNebim ? siteConfig.nebimProjects : siteConfig.nebimProjects.slice(0, NEBIM_PREVIEW_COUNT);
 
   return (
     <main id="top">
-      <Nav lang={lang} setLang={setLang} />
+      <Nav />
 
       <header className="hero heroPhotoPrime heroClean">
         <div className="heroPhotoBg" aria-hidden="true" />
         <div className="speedlines heroPhotoLines" aria-hidden="true"><i/><i/><i/><i/><i/></div>
         <div className="wrap heroPrimeGrid">
           <div className="heroPrimeCopy">
-            <div className="eyebrow">{en ? "Çağdaş Şen · Retail Systems Leader" : "Çağdaş Şen · Perakende Sistemleri Lideri"}</div>
-            {en ? (
-              <h1 className="heroPrimeTitle">Retail.<br/><span>Payments.</span><br/>Technology.</h1>
-            ) : (
-              <h1 className="heroPrimeTitle">Perakende.<br/><span>Ödeme.</span><br/>Teknoloji.</h1>
-            )}
+            <div className="eyebrow">Çağdaş Şen · Perakende Sistemleri Lideri</div>
+            <h1 className="heroPrimeTitle">Perakende.<br/><span>Ödeme.</span><br/>Teknoloji.</h1>
             <div className="heroQuoteMain">
-              <p><span className="quoteMark">&ldquo;</span>{en ? siteConfig.quoteEn : siteConfig.quote}</p>
-              <img className="heroSignature" src="/cagdas-sen-signature-black.webp" alt={en ? "Çağdaş Şen signature" : "Çağdaş Şen imza"} />
+              <p><span className="quoteMark">&ldquo;</span>{siteConfig.quote}</p>
+              <img className="heroSignature" src="/cagdas-sen-signature-black.webp" alt="Çağdaş Şen imza" />
             </div>
             <div className="actions">
-              <a className="btn primary" href="#projects">{en ? "View Projects →" : "Projeleri Gör →"}</a>
-              <a className="btnLink" href="#contact">{en ? "Get in Touch →" : "Bana Ulaş →"}</a>
+              <a className="btn primary" href="#projects">Projeleri Gör →</a>
+              <a className="btnLink" href="#contact">Bana Ulaş →</a>
             </div>
             <div className="statRow">
-              <div className="statItem"><strong>23+</strong><span>{en ? "Years of experience" : "Yıllık deneyim"}</span></div>
-              <div className="statItem"><strong>500+</strong><span>{en ? "Companies engaged" : "Firmayla iş geliştirme"}</span></div>
-              <div className="statItem"><strong>10</strong><span>{en ? "Different companies" : "Farklı şirket"}</span></div>
+              <div className="statItem"><strong>23+</strong><span>Yıllık deneyim</span></div>
+              <div className="statItem"><strong>500+</strong><span>Firmayla iş geliştirme</span></div>
+              <div className="statItem"><strong>10</strong><span>Farklı şirket</span></div>
             </div>
             <div className="channelRow">
               <a className="channelBtn" href={siteConfig.linkedin} target="_blank" title="LinkedIn">in</a>
@@ -103,9 +97,7 @@ export default function Home() {
         </Reveal>
         <div className="nebimToggleRow">
           <button type="button" className="nebimToggle" onClick={() => setShowAllNebim((v) => !v)}>
-            {showAllNebim
-              ? (en ? "Show less ↑" : "Listeyi daralt ↑")
-              : (en ? `See all ${siteConfig.nebimProjects.length} projects →` : `Tüm ${siteConfig.nebimProjects.length} projeyi gör →`)}
+            {showAllNebim ? "Listeyi daralt ↑" : `Tüm ${siteConfig.nebimProjects.length} projeyi gör →`}
           </button>
         </div>
       </div></section>
@@ -113,7 +105,7 @@ export default function Home() {
       <section id="instagram" className="section instagramSection"><div className="wrap"><Reveal className="sectionHead"><div><div className="kicker">Instagram · {siteConfig.instagramHandle}</div><h2>Sahadan. Hayattan. Hareket halinde.</h2></div><p className="intro">LinkedIn fikirlerin ve sektörün merkeziyse, Instagram daha fazla yolculuk, mağaza, etkinlik, ekip ve sahne arkası. Aynı marka; daha kişisel, daha görsel, daha canlı.</p></Reveal><Reveal className="instagramHero"><div className="igCopy"><div className="igHandle">{siteConfig.instagramHandle}</div><h3>Retail&apos;in içinden,<br/>hayatın içinden.</h3><p>Mağazalar, teknoloji, etkinlikler, yolculuklar ve günün içinden kareler. Çağdaş Şen markasının daha spontan tarafı.</p><a className="igButton" href={siteConfig.instagram} target="_blank">Instagram&apos;da Gör ↗</a></div><div className="igVisual"><div className="igRail"><span>RETAIL</span><span>TRAVEL</span><span>TECH</span><span>PEOPLE</span><span>EVENTS</span></div><div className="igGrid"><a href={siteConfig.instagram} target="_blank" className="igTile"><b>STORE</b><small>field moments</small></a><a href={siteConfig.instagram} target="_blank" className="igTile"><b>PEOPLE</b><small>behind the scenes</small></a><a href={siteConfig.instagram} target="_blank" className="igTile"><b>MOVE</b><small>life in motion</small></a></div></div></Reveal></div></section>
 
       <section id="talks" className="section">
-        <div className="wrap"><Reveal className="ai aiStandalone"><div className="kicker">Ask Çağdaş</div><h3>WhatsApp AI</h3><p className="intro">Retail, payments ve teknoloji hakkında benim yayınladığım içeriklerden beslenen dijital asistan.</p><div className="chat"><div className="bubble">Merhaba Çağdaş, mağazada mobil checkout için en kritik 3 konu nedir?</div><div className="bubble me">1. Kasa/ERP entegrasyonu<br/>2. Ödeme akışının güvenliği<br/>3. Operasyon ve kullanıcı deneyimi</div></div>{waActive ? (<a className="whatsapp" href={wa} target="_blank">{en ? "Ask on WhatsApp →" : "WhatsApp ile Sor →"}</a>) : (<span className="whatsappSoon">{en ? "Ask Çağdaş — Coming soon" : "Ask Çağdaş — Yakında"}</span>)}</Reveal></div>
+        <div className="wrap"><Reveal className="ai aiStandalone"><div className="kicker">Ask Çağdaş</div><h3>WhatsApp AI</h3><p className="intro">Retail, payments ve teknoloji hakkında benim yayınladığım içeriklerden beslenen dijital asistan.</p><div className="chat"><div className="bubble">Merhaba Çağdaş, mağazada mobil checkout için en kritik 3 konu nedir?</div><div className="bubble me">1. Kasa/ERP entegrasyonu<br/>2. Ödeme akışının güvenliği<br/>3. Operasyon ve kullanıcı deneyimi</div></div>{waActive ? (<a className="whatsapp" href={wa} target="_blank">WhatsApp ile Sor →</a>) : (<span className="whatsappSoon">Ask Çağdaş — Yakında</span>)}</Reveal></div>
       </section>
 
       <footer id="contact" className="footer"><div className="wrap"><div className="footgrid"><div><div className="kicker">Çağdaş Şen</div><div className="footbig">Perakende. Ödeme. Teknoloji.<br/><span>Gerçek saha deneyimiyle.</span></div><img className="signatureMark" src="/cagdas-sen-signature-white.webp" alt="Çağdaş Şen imza" /><div className="contactgrid"><a className="contact" href={siteConfig.linkedin} target="_blank">LinkedIn ↗</a><a className="contact" href={siteConfig.instagram} target="_blank">Instagram {siteConfig.instagramHandle} ↗</a>{waActive && <a className="contact" href={wa} target="_blank">WhatsApp ↗</a>}<a className="contact" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></div></div></div><div className="tiny">© 2026 Çağdaş Şen · Retail · Payments · Technology</div></div></footer>

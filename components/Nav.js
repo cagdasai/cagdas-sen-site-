@@ -1,23 +1,17 @@
 "use client";
 import { siteConfig } from "../lib/siteConfig";
 
-export default function Nav({ lang, setLang }) {
+export default function Nav() {
   return (
     <nav className="nav">
       <div className="wrap navin">
         <a className="brand wordmarkOnly" href="#top" aria-label="Çağdaş Şen ana sayfa">ÇAĞDAŞ ŞEN</a>
         <div className="navlinks">
-          {siteConfig.nav.map(([tr, href, en]) => (
-            <a href={href} key={href}>{lang === "en" ? en : tr}</a>
+          {siteConfig.nav.map(([tr, href]) => (
+            <a href={href} key={href}>{tr}</a>
           ))}
         </div>
-        <div className="langToggle">
-          <button type="button" className={lang === "tr" ? "active" : ""} onClick={() => setLang("tr")}>TR</button>
-          <button type="button" className={lang === "en" ? "active" : ""} onClick={() => setLang("en")}>EN</button>
-        </div>
-        <a className="cta" href={`mailto:${siteConfig.email}`}>
-          {lang === "en" ? "Let's talk →" : "İletişime Geç →"}
-        </a>
+        <a className="cta" href={`mailto:${siteConfig.email}`}>İletişime Geç →</a>
       </div>
     </nav>
   );

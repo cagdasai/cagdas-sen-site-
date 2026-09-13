@@ -70,10 +70,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="video" className="section"><div className="wrap">
-        <Reveal className="sectionHead"><div><div className="kicker">{siteConfig.featuredVideo.kicker}</div><h2>{siteConfig.featuredVideo.title}</h2></div><p className="intro">{siteConfig.featuredVideo.description}</p></Reveal>
-        <Reveal className="linkedinEmbed">
-          <iframe src={siteConfig.featuredVideo.embedUrl} height="753" width="504" frameBorder="0" allowFullScreen title="Çağdaş Şen LinkedIn gönderisi" />
+      <section id="linkedin" className="section"><div className="wrap">
+        <Reveal className="sectionHead"><div><div className="kicker">{siteConfig.linkedinSection.kicker}</div><h2>{siteConfig.linkedinSection.title}</h2></div><p className="intro">{siteConfig.linkedinSection.description}</p></Reveal>
+        <Reveal className="linkedinRow">
+          {siteConfig.linkedinPosts.map((post) => (
+            <div className="linkedinEmbed" key={post.embedUrl}>
+              <iframe src={post.embedUrl} height="480" width="504" frameBorder="0" allowFullScreen title="Çağdaş Şen LinkedIn gönderisi" />
+            </div>
+          ))}
         </Reveal>
       </div></section>
 
@@ -106,17 +110,6 @@ export default function Home() {
             {showAllNebim ? "Listeyi daralt ↑" : `Tüm ${siteConfig.nebimProjects.length} projeyi gör →`}
           </button>
         </div>
-      </div></section>
-
-      <section id="linkedin" className="section"><div className="wrap">
-        <Reveal className="sectionHead"><div><div className="kicker">LinkedIn</div><h2>Sahadan paylaşımlar.</h2></div><p className="intro">LinkedIn'de paylaştığım saha görüntüleri ve projelerden kesitler.</p></Reveal>
-        <Reveal className="linkedinRow">
-          {siteConfig.linkedinPosts.map((post) => (
-            <div className="linkedinEmbed" key={post.embedUrl}>
-              <iframe src={post.embedUrl} height="753" width="504" frameBorder="0" allowFullScreen title="Çağdaş Şen LinkedIn gönderisi" />
-            </div>
-          ))}
-        </Reveal>
       </div></section>
 
       <section id="talks" className="section">

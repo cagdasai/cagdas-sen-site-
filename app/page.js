@@ -62,7 +62,6 @@ export default function Home() {
         <div className="caseGrid">
           {siteConfig.caseStudies.map((c) => (
             <Reveal as="article" className="caseCard" key={c.client}>
-              {c.visual === "image" && <img className="caseCardImage" src={c.image} alt={c.imageAlt} loading="lazy" />}
               <div className="caseCardCategory">{c.category}</div>
               <h3 className="caseCardClient">{c.client}</h3>
               <div className="caseCardStat">{c.stat}</div>

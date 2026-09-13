@@ -91,6 +91,10 @@ h1 span{color:var(--red)}
 .nebimItem strong{font-size:14px;font-weight:800}
 .nebimItem span{font-size:11px;color:#7a828c;line-height:1.4}
 .nebimItem small{font-size:10px;color:var(--red);font-weight:700;letter-spacing:.04em}
+.nebimToggleRow{display:flex;justify-content:center;margin-top:24px}
+.nebimToggle{background:none;border:1px solid rgba(13,16,20,.16);padding:14px 22px;font:800 11px/1 Inter,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);cursor:pointer;transition:.25s}
+.nebimToggle:hover{border-color:var(--red);color:var(--red)}
+.whatsappSoon{display:inline-flex;margin-top:16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#c7ccd3;padding:14px 18px;font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.08em}
 .ai.aiStandalone{max-width:none;border-radius:0}
 @media(max-width:1000px){.timelineItem{grid-template-columns:1fr}.nebimGrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.nebimGrid{grid-template-columns:1fr}}

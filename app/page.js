@@ -11,10 +11,15 @@ const focus = [
   ["04", "PERFORMANCE", "Veri & Performans", "Projeyi yalnızca devreye almak değil; satış, hız, operasyon ve müşteri deneyiminde etkisini ölçmek."],
 ];
 
+const NEBIM_PREVIEW_COUNT = 14;
+
 export default function Home() {
   const wa = whatsappUrl();
+  const waActive = wa.startsWith("http");
   const [lang, setLang] = useState("tr");
   const en = lang === "en";
+  const [showAllNebim, setShowAllNebim] = useState(false);
+  const nebimVisible = showAllNebim ? siteConfig.nebimProjects : siteConfig.nebimProjects.slice(0, NEBIM_PREVIEW_COUNT);
 
   return (
     <main id="top">
@@ -48,7 +53,7 @@ export default function Home() {
               <a className="channelBtn" href={siteConfig.linkedin} target="_blank" title="LinkedIn">in</a>
               <a className="channelBtn" href={siteConfig.instagram} target="_blank" title="Instagram">IG</a>
               <a className="channelBtn" href={`mailto:${siteConfig.email}`} title="Email">@</a>
-              <a className="channelBtn" href={wa} target={wa.startsWith("http") ? "_blank" : undefined} title="WhatsApp">WA</a>
+              <a className="channelBtn" href={wa} target={waActive ? "_blank" : undefined} title="WhatsApp">WA</a>
             </div>
           </div>
           <div className="heroPrimeVisual">
@@ -65,14 +70,6 @@ export default function Home() {
 
       <section id="focus" className="section"><div className="wrap"><Reveal className="sectionHead"><div><div className="kicker">Odak</div><h2>Perakendeyi geleceğe taşıyan 4 güç.</h2></div><p className="intro">Güçlü deneyim, kusursuz ödeme, doğru entegrasyon ve ölçülebilir performans. Benim dünyam bu dört alanın kesişiminde.</p></Reveal><div className="focusGrid">{focus.map(([n,tag,title,body])=><Reveal as="article" className="focus" key={n}><span className="ghostnum">{n}</span><em>{n} / {tag}</em><h3>{title}</h3><p>{body}</p><span className="arrow">→</span></Reveal>)}</div></div></section>
 
-      <section id="insights" className="section"><div className="wrap"><Reveal className="sectionHead"><div><div className="kicker">Field Notes</div><h2>Sahadan düşünceler.</h2></div><p className="intro">Perakende, ödeme sistemleri, mobil checkout ve yeni nesil mağazacılık üzerine kısa ve net notlar.</p></Reveal><Reveal as="aside" className="insights standaloneInsights">{siteConfig.notes.map(([date,title])=><div className="insight" key={title}><div className="date">{date}</div><h4>{title}</h4><div className="go">↗</div></div>)}</Reveal></div></section>
-
-      <section id="instagram" className="section instagramSection"><div className="wrap"><Reveal className="sectionHead"><div><div className="kicker">Instagram · {siteConfig.instagramHandle}</div><h2>Sahadan. Hayattan. Hareket halinde.</h2></div><p className="intro">LinkedIn fikirlerin ve sektörün merkeziyse, Instagram daha fazla yolculuk, mağaza, etkinlik, ekip ve sahne arkası. Aynı marka; daha kişisel, daha görsel, daha canlı.</p></Reveal><Reveal className="instagramHero"><div className="igCopy"><div className="igHandle">{siteConfig.instagramHandle}</div><h3>Retail&apos;in içinden,<br/>hayatın içinden.</h3><p>Mağazalar, teknoloji, etkinlikler, yolculuklar ve günün içinden kareler. Çağdaş Şen markasının daha spontan tarafı.</p><a className="igButton" href={siteConfig.instagram} target="_blank">Instagram&apos;da Gör ↗</a></div><div className="igVisual"><div className="igRail"><span>RETAIL</span><span>TRAVEL</span><span>TECH</span><span>PEOPLE</span><span>EVENTS</span></div><div className="igGrid"><a href={siteConfig.instagram} target="_blank" className="igTile"><b>STORE</b><small>field moments</small></a><a href={siteConfig.instagram} target="_blank" className="igTile"><b>PEOPLE</b><small>behind the scenes</small></a><a href={siteConfig.instagram} target="_blank" className="igTile"><b>MOVE</b><small>life in motion</small></a></div></div></Reveal></div></section>
-
-      <section id="talks" className="section">
-        <div className="wrap"><Reveal className="ai aiStandalone"><div className="kicker">Ask Çağdaş</div><h3>WhatsApp AI</h3><p className="intro">Retail, payments ve teknoloji hakkında benim yayınladığım içeriklerden beslenen dijital asistan.</p><div className="chat"><div className="bubble">Merhaba Çağdaş, mağazada mobil checkout için en kritik 3 konu nedir?</div><div className="bubble me">1. Kasa/ERP entegrasyonu<br/>2. Ödeme akışının güvenliği<br/>3. Operasyon ve kullanıcı deneyimi</div></div><a className="whatsapp" href={wa} target={wa.startsWith("http") ? "_blank" : undefined}>{siteConfig.whatsapp ? "WhatsApp ile Sor →" : "WhatsApp numarası eklenecek →"}</a></Reveal></div>
-      </section>
-
       <section className="projectStrip" id="projects">
         <div className="wrap projectStripGrid">
           <div className="projectStripIntro"><div className="kicker">Selected Projects</div><h2>Markalar.<br/>Projeler.<br/>Gerçek saha.</h2><a href="#nebim" className="stripLink">Tüm dünyayı keşfet →</a></div>
@@ -80,14 +77,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="nebim" className="section"><div className="wrap">
-        <Reveal className="sectionHead"><div><div className="kicker">Nebim Dönemi · 2011–2017</div><h2>59 marka, 59 ERP projesi.</h2></div><p className="intro">Nebim'de Senior Key Account Manager olarak, Türkiye'nin önde gelen perakende markalarında uçtan uca ERP geçiş ve entegrasyon projelerinde aktif rol aldım.</p></Reveal>
-        <Reveal className="nebimGrid">
-          {siteConfig.nebimProjects.map(([name, detail, period]) => (
-            <div className="nebimItem" key={name + period}><strong>{name}</strong><span>{detail}</span><small>{period}</small></div>
-          ))}
-        </Reveal>
-      </div></section>
+      <section id="insights" className="section"><div className="wrap"><Reveal className="sectionHead"><div><div className="kicker">Field Notes</div><h2>Sahadan düşünceler.</h2></div><p className="intro">Perakende, ödeme sistemleri, mobil checkout ve yeni nesil mağazacılık üzerine kısa ve net notlar.</p></Reveal><Reveal as="aside" className="insights standaloneInsights">{siteConfig.notes.map(([date,title])=><div className="insight" key={title}><div className="date">{date}</div><h4>{title}</h4><div className="go">↗</div></div>)}</Reveal></div></section>
 
       <section id="career" className="section"><div className="wrap">
         <Reveal className="sectionHead"><div><div className="kicker">Deneyim</div><h2>23+ yıl, 10 farklı şirkette kariyer yolculuğu.</h2></div><p className="intro">2003'ten bugüne perakende teknolojileri, ödeme sistemleri ve iş geliştirme odaklı kariyer.</p></Reveal>
@@ -104,7 +94,29 @@ export default function Home() {
         </Reveal>
       </div></section>
 
-      <footer id="contact" className="footer"><div className="wrap"><div className="footgrid"><div><div className="kicker">Çağdaş Şen</div><div className="footbig">Hız. Deneyim. Teknoloji. Ödeme.<br/><span>Perakendeyi geleceğe taşı.</span></div><img className="signatureMark" src="/cagdas-sen-signature-white.webp" alt="Çağdaş Şen imza" /><div className="contactgrid"><a className="contact" href={siteConfig.linkedin} target="_blank">LinkedIn ↗</a><a className="contact" href={siteConfig.instagram} target="_blank">Instagram {siteConfig.instagramHandle} ↗</a><a className="contact" href={wa}>{siteConfig.whatsapp ? "WhatsApp ↗" : "WhatsApp — bağlanacak"}</a><a className="contact" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></div></div></div><div className="tiny">© 2026 Çağdaş Şen · Retail · Payments · Technology</div></div></footer>
+      <section id="nebim" className="section"><div className="wrap">
+        <Reveal className="sectionHead"><div><div className="kicker">Nebim Dönemi · 2011–2017</div><h2>59 marka, 59 ERP projesi.</h2></div><p className="intro">Nebim'de Senior Key Account Manager olarak, Türkiye'nin önde gelen perakende markalarında uçtan uca ERP geçiş ve entegrasyon projelerinde aktif rol aldım.</p></Reveal>
+        <Reveal className="nebimGrid">
+          {nebimVisible.map(([name, detail, period]) => (
+            <div className="nebimItem" key={name + period}><strong>{name}</strong><span>{detail}</span><small>{period}</small></div>
+          ))}
+        </Reveal>
+        <div className="nebimToggleRow">
+          <button type="button" className="nebimToggle" onClick={() => setShowAllNebim((v) => !v)}>
+            {showAllNebim
+              ? (en ? "Show less ↑" : "Listeyi daralt ↑")
+              : (en ? `See all ${siteConfig.nebimProjects.length} projects →` : `Tüm ${siteConfig.nebimProjects.length} projeyi gör →`)}
+          </button>
+        </div>
+      </div></section>
+
+      <section id="instagram" className="section instagramSection"><div className="wrap"><Reveal className="sectionHead"><div><div className="kicker">Instagram · {siteConfig.instagramHandle}</div><h2>Sahadan. Hayattan. Hareket halinde.</h2></div><p className="intro">LinkedIn fikirlerin ve sektörün merkeziyse, Instagram daha fazla yolculuk, mağaza, etkinlik, ekip ve sahne arkası. Aynı marka; daha kişisel, daha görsel, daha canlı.</p></Reveal><Reveal className="instagramHero"><div className="igCopy"><div className="igHandle">{siteConfig.instagramHandle}</div><h3>Retail&apos;in içinden,<br/>hayatın içinden.</h3><p>Mağazalar, teknoloji, etkinlikler, yolculuklar ve günün içinden kareler. Çağdaş Şen markasının daha spontan tarafı.</p><a className="igButton" href={siteConfig.instagram} target="_blank">Instagram&apos;da Gör ↗</a></div><div className="igVisual"><div className="igRail"><span>RETAIL</span><span>TRAVEL</span><span>TECH</span><span>PEOPLE</span><span>EVENTS</span></div><div className="igGrid"><a href={siteConfig.instagram} target="_blank" className="igTile"><b>STORE</b><small>field moments</small></a><a href={siteConfig.instagram} target="_blank" className="igTile"><b>PEOPLE</b><small>behind the scenes</small></a><a href={siteConfig.instagram} target="_blank" className="igTile"><b>MOVE</b><small>life in motion</small></a></div></div></Reveal></div></section>
+
+      <section id="talks" className="section">
+        <div className="wrap"><Reveal className="ai aiStandalone"><div className="kicker">Ask Çağdaş</div><h3>WhatsApp AI</h3><p className="intro">Retail, payments ve teknoloji hakkında benim yayınladığım içeriklerden beslenen dijital asistan.</p><div className="chat"><div className="bubble">Merhaba Çağdaş, mağazada mobil checkout için en kritik 3 konu nedir?</div><div className="bubble me">1. Kasa/ERP entegrasyonu<br/>2. Ödeme akışının güvenliği<br/>3. Operasyon ve kullanıcı deneyimi</div></div>{waActive ? (<a className="whatsapp" href={wa} target="_blank">{en ? "Ask on WhatsApp →" : "WhatsApp ile Sor →"}</a>) : (<span className="whatsappSoon">{en ? "Ask Çağdaş — Coming soon" : "Ask Çağdaş — Yakında"}</span>)}</Reveal></div>
+      </section>
+
+      <footer id="contact" className="footer"><div className="wrap"><div className="footgrid"><div><div className="kicker">Çağdaş Şen</div><div className="footbig">Perakende. Ödeme. Teknoloji.<br/><span>Gerçek saha deneyimiyle.</span></div><img className="signatureMark" src="/cagdas-sen-signature-white.webp" alt="Çağdaş Şen imza" /><div className="contactgrid"><a className="contact" href={siteConfig.linkedin} target="_blank">LinkedIn ↗</a><a className="contact" href={siteConfig.instagram} target="_blank">Instagram {siteConfig.instagramHandle} ↗</a>{waActive && <a className="contact" href={wa} target="_blank">WhatsApp ↗</a>}<a className="contact" href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></div></div></div><div className="tiny">© 2026 Çağdaş Şen · Retail · Payments · Technology</div></div></footer>
     </main>
   );
 }

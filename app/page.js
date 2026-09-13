@@ -74,9 +74,10 @@ export default function Home() {
 
       <section id="insights" className="section sectionSlim"><div className="wrap">
         <Reveal className="sectionHead compact"><div><h2>{siteConfig.notesSection.title}</h2></div><p className="intro">{siteConfig.notesSection.description}</p></Reveal>
-        <div className="noteCompactList">
+        <div className="noteGrid">
           {siteConfig.fieldNotes.slice(0, 3).map((n) => (
-            <Reveal as="article" className="noteCompactRow" key={n.title}>
+            <Reveal as="article" className="noteCard" key={n.title}>
+              {n.image && <img className="noteCardImage" src={n.image} alt={n.imageAlt} loading="lazy" />}
               <div className="noteCompactMeta">{n.category}{n.date ? ` · ${n.date}` : ""}</div>
               <h3 className="noteCompactTitle">{n.title}</h3>
               <p className="noteCompactSummary">{n.summary}</p>

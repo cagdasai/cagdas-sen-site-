@@ -382,6 +382,11 @@ h1 span{color:var(--red)}
 .noteCompactTitle{font-family:Manrope,sans-serif;font-size:18px;line-height:1.25;margin:0 0 6px;color:var(--ink)}
 .noteCompactSummary{color:#5c636c;font-size:13.5px;line-height:1.5;margin:0 0 8px;max-width:720px}
 
+.noteGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.noteCard{border:1px solid var(--line);background:#fff;padding:18px}
+.noteCardImage{width:calc(100% + 36px);height:130px;object-fit:cover;display:block;margin:-18px -18px 16px}
+@media(max-width:1000px){.noteGrid{grid-template-columns:1fr}}
+
 /* --- Odak, kompakt bant --- */
 .focusBand{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
 .focusItem{padding:14px 12px;border:1px solid var(--line);background:#fff;font:700 13px/1.3 Manrope,sans-serif;color:var(--ink);text-align:center}

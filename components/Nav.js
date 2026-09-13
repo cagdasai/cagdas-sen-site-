@@ -1,7 +1,9 @@
 "use client";
-import { siteConfig } from "../lib/siteConfig";
+import { siteConfig, whatsappUrl } from "../lib/siteConfig";
 
 export default function Nav() {
+  const wa = whatsappUrl();
+  const waActive = wa.startsWith("http");
   return (
     <nav className="nav">
       <div className="wrap navin">
@@ -11,7 +13,7 @@ export default function Nav() {
             <a href={href} key={href}>{tr}</a>
           ))}
         </div>
-        <a className="cta" href={`mailto:${siteConfig.email}`}>İletişime Geç →</a>
+        <a className="cta" href={wa} target={waActive ? "_blank" : undefined}>İletişime Geç →</a>
       </div>
     </nav>
   );

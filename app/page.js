@@ -36,7 +36,6 @@ export default function Home() {
             </div>
             <div className="actions">
               <a className="btn primary" href="#projects">Projeleri Gör →</a>
-              <a className="btnLink" href="#contact">Bana Ulaş →</a>
             </div>
             <div className="statRow">
               <div className="statItem"><strong>23+</strong><span>Yıllık deneyim</span></div>

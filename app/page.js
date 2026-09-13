@@ -28,7 +28,7 @@ export default function Home() {
         <div className="speedlines heroPhotoLines" aria-hidden="true"><i/><i/><i/><i/><i/></div>
         <div className="wrap heroPrimeGrid">
           <div className="heroPrimeCopy">
-            <div className="eyebrow">Çağdaş Şen · Perakende Sistemleri Lideri</div>
+            <div className="eyebrow">Çağdaş Şen</div>
             <h1 className="heroPrimeTitle">Perakende.<br/><span>Ödeme.</span><br/>Teknoloji.</h1>
             <div className="heroQuoteMain">
               <p><span className="quoteMark">&ldquo;</span>{siteConfig.quote}</p>
@@ -91,21 +91,28 @@ export default function Home() {
             </Reveal>
           ))}
         </div>
-        <div className="caseCta"><a href="#nebim" className="btnLink">Diğer Projeleri Keşfet →</a></div>
+        <div className="sectionCta"><a href="#nebim" className="btnLink">Diğer Projeleri Keşfet →</a></div>
       </div></section>
 
-      <section id="linkedin" className="section"><div className="wrap">
-        <Reveal className="sectionHead"><div><div className="kicker">{siteConfig.linkedinSection.kicker}</div><h2>{siteConfig.linkedinSection.title}</h2></div><p className="intro">{siteConfig.linkedinSection.description}</p></Reveal>
-        <Reveal className="linkedinRow">
-          {siteConfig.linkedinPosts.map((post) => (
-            <div className="linkedinEmbed" key={post.embedUrl}>
-              <iframe src={post.embedUrl} height="480" width="504" frameBorder="0" allowFullScreen title="Çağdaş Şen LinkedIn gönderisi" />
-            </div>
+      <section id="insights" className="section"><div className="wrap">
+        <Reveal className="sectionHead"><div><h2>{siteConfig.notesSection.title}</h2></div><p className="intro">{siteConfig.notesSection.description}</p></Reveal>
+        <div className="noteList">
+          {siteConfig.fieldNotes.map((n) => (
+            <Reveal as="article" className="noteRow" key={n.title}>
+              <div className="noteMeta">
+                <span className="noteCategory">{n.category}</span>
+                {n.date && <span className="noteDate">{n.date}</span>}
+              </div>
+              <div className="noteBody">
+                <h3 className="noteTitle">{n.title}</h3>
+                <p className="noteSummary">{n.summary}</p>
+                <a className="btnLink" href={n.url} target="_blank" rel="noopener noreferrer">{n.ctaLabel}</a>
+              </div>
+            </Reveal>
           ))}
-        </Reveal>
+        </div>
+        <div className="sectionCta"><a href="/notlar" className="btnLink">Tüm Paylaşımları Gör →</a></div>
       </div></section>
-
-      <section id="insights" className="section"><div className="wrap"><Reveal className="sectionHead"><div><div className="kicker">Field Notes</div><h2>Sahadan düşünceler.</h2></div><p className="intro">Perakende, ödeme sistemleri, mobil checkout ve yeni nesil mağazacılık üzerine kısa ve net notlar.</p></Reveal><Reveal as="aside" className="insights standaloneInsights">{siteConfig.notes.map(([date,title])=><div className="insight" key={title}><div className="date">{date}</div><h4>{title}</h4><div className="go">↗</div></div>)}</Reveal></div></section>
 
       <section id="career" className="section"><div className="wrap">
         <Reveal className="sectionHead"><div><div className="kicker">Deneyim</div><h2>23+ yıl, 10 farklı şirkette kariyer yolculuğu.</h2></div><p className="intro">2003'ten bugüne perakende teknolojileri, ödeme sistemleri ve iş geliştirme odaklı kariyer.</p></Reveal>

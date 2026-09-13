@@ -108,7 +108,16 @@ export default function Home() {
         </div>
       </div></section>
 
-      <section id="instagram" className="section instagramSection"><div className="wrap"><Reveal className="sectionHead"><div><div className="kicker">Instagram · {siteConfig.instagramHandle}</div><h2>Sahadan. Hayattan. Hareket halinde.</h2></div><p className="intro">LinkedIn fikirlerin ve sektörün merkeziyse, Instagram daha fazla yolculuk, mağaza, etkinlik, ekip ve sahne arkası. Aynı marka; daha kişisel, daha görsel, daha canlı.</p></Reveal><Reveal className="instagramHero"><div className="igCopy"><div className="igHandle">{siteConfig.instagramHandle}</div><h3>Retail&apos;in içinden,<br/>hayatın içinden.</h3><p>Mağazalar, teknoloji, etkinlikler, yolculuklar ve günün içinden kareler. Çağdaş Şen markasının daha spontan tarafı.</p><a className="igButton" href={siteConfig.instagram} target="_blank">Instagram&apos;da Gör ↗</a></div><div className="igVisual"><div className="igRail"><span>RETAIL</span><span>TRAVEL</span><span>TECH</span><span>PEOPLE</span><span>EVENTS</span></div><div className="igGrid"><a href={siteConfig.instagram} target="_blank" className="igTile"><b>STORE</b><small>field moments</small></a><a href={siteConfig.instagram} target="_blank" className="igTile"><b>PEOPLE</b><small>behind the scenes</small></a><a href={siteConfig.instagram} target="_blank" className="igTile"><b>MOVE</b><small>life in motion</small></a></div></div></Reveal></div></section>
+      <section id="linkedin" className="section"><div className="wrap">
+        <Reveal className="sectionHead"><div><div className="kicker">LinkedIn</div><h2>Sahadan paylaşımlar.</h2></div><p className="intro">LinkedIn'de paylaştığım saha görüntüleri ve projelerden kesitler.</p></Reveal>
+        <Reveal className="linkedinRow">
+          {siteConfig.linkedinPosts.map((post) => (
+            <div className="linkedinEmbed" key={post.embedUrl}>
+              <iframe src={post.embedUrl} height="753" width="504" frameBorder="0" allowFullScreen title="Çağdaş Şen LinkedIn gönderisi" />
+            </div>
+          ))}
+        </Reveal>
+      </div></section>
 
       <section id="talks" className="section">
         <div className="wrap"><Reveal className="ai aiStandalone"><div className="kicker">Ask Çağdaş</div><h3>WhatsApp AI</h3><p className="intro">Retail, payments ve teknoloji hakkında benim yayınladığım içeriklerden beslenen dijital asistan.</p><div className="chat"><div className="bubble">Merhaba Çağdaş, mağazada mobil checkout için en kritik 3 konu nedir?</div><div className="bubble me">1. Kasa/ERP entegrasyonu<br/>2. Ödeme akışının güvenliği<br/>3. Operasyon ve kullanıcı deneyimi</div></div>{waActive ? (<a className="whatsapp" href={wa} target="_blank">WhatsApp ile Sor →</a>) : (<span className="whatsappSoon">Ask Çağdaş — Yakında</span>)}</Reveal></div>

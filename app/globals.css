@@ -97,6 +97,8 @@ h1 span{color:var(--red)}
 .whatsappSoon{display:inline-flex;margin-top:16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#c7ccd3;padding:14px 18px;font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.08em}
 .linkedinEmbed{display:flex;justify-content:center}
 .linkedinEmbed iframe{width:100%;max-width:504px;height:753px;border:1px solid var(--line);background:#fff}
+.linkedinRow{display:flex;flex-wrap:wrap;gap:24px;justify-content:center}
+.linkedinRow .linkedinEmbed{flex:1 1 320px}
 @media(max-width:640px){.linkedinEmbed iframe{height:640px}}
 .ai.aiStandalone{max-width:none;border-radius:0}
 @media(max-width:1000px){.timelineItem{grid-template-columns:1fr}.nebimGrid{grid-template-columns:repeat(2,1fr)}}

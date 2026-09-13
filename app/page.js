@@ -63,12 +63,36 @@ export default function Home() {
 
       <section id="focus" className="section"><div className="wrap"><Reveal className="sectionHead"><div><div className="kicker">Odak</div><h2>Perakendeyi geleceğe taşıyan 4 güç.</h2></div><p className="intro">Güçlü deneyim, kusursuz ödeme, doğru entegrasyon ve ölçülebilir performans. Benim dünyam bu dört alanın kesişiminde.</p></Reveal><div className="focusGrid">{focus.map(([n,tag,title,body])=><Reveal as="article" className="focus" key={n}><span className="ghostnum">{n}</span><em>{n} / {tag}</em><h3>{title}</h3><p>{body}</p><span className="arrow">→</span></Reveal>)}</div></div></section>
 
-      <section className="projectStrip" id="projects">
-        <div className="wrap projectStripGrid">
-          <div className="projectStripIntro"><div className="kicker">Selected Projects</div><h2>Markalar.<br/>Projeler.<br/>Gerçek saha.</h2><a href="#nebim" className="stripLink">Tüm dünyayı keşfet →</a></div>
-          <div className="projectTiles">{siteConfig.projects.map((p,i)=><article className="projectTile" key={p.name}><div className={`tileArt tile${i+1}`}><span>{p.name}</span></div><div className="tileMeta"><h3>{p.name}</h3><p>{p.detail}</p></div></article>)}</div>
+      <section id="projects" className="section"><div className="wrap">
+        <Reveal className="sectionHead"><div><h2>Seçilmiş Çalışmalar</h2></div><p className="intro">Perakende, ödeme ve teknolojinin sahadaki karşılığı.</p></Reveal>
+        <div className="caseList">
+          {siteConfig.caseStudies.map((c, i) => (
+            <Reveal as="article" className={`caseRow${i % 2 === 1 ? " caseRowReverse" : ""}`} key={c.client}>
+              <div className="caseMeta">
+                <span className="caseNumber">{c.number}</span>
+                <span className="caseCategory">{c.category}</span>
+              </div>
+              <div className="caseVisual">
+                {c.visual === "image" ? (
+                  <img className="caseImage" src={c.image} alt={c.imageAlt} loading="lazy" />
+                ) : (
+                  <div className={`caseVisualType ${c.visualClass}`}>
+                    <span className="caseWordmark">{c.client}</span>
+                    {c.visualClass === "typeBeymen" && <span className="caseAccentLine" aria-hidden="true" />}
+                  </div>
+                )}
+              </div>
+              <div className="caseBody">
+                <h3 className="caseTitle">{c.title}</h3>
+                <p className="caseDescription">{c.description}</p>
+                <div className="caseStat">{c.stat}</div>
+                <div className="caseTags">{c.tags.map((t) => <span key={t}>{t}</span>)}</div>
+              </div>
+            </Reveal>
+          ))}
         </div>
-      </section>
+        <div className="caseCta"><a href="#nebim" className="btnLink">Diğer Projeleri Keşfet →</a></div>
+      </div></section>
 
       <section id="linkedin" className="section"><div className="wrap">
         <Reveal className="sectionHead"><div><div className="kicker">{siteConfig.linkedinSection.kicker}</div><h2>{siteConfig.linkedinSection.title}</h2></div><p className="intro">{siteConfig.linkedinSection.description}</p></Reveal>

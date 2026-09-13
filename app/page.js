@@ -70,6 +70,13 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="video" className="section"><div className="wrap">
+        <Reveal className="sectionHead"><div><div className="kicker">{siteConfig.featuredVideo.kicker}</div><h2>{siteConfig.featuredVideo.title}</h2></div><p className="intro">{siteConfig.featuredVideo.description}</p></Reveal>
+        <Reveal className="linkedinEmbed">
+          <iframe src={siteConfig.featuredVideo.embedUrl} height="753" width="504" frameBorder="0" allowFullScreen title="Çağdaş Şen LinkedIn gönderisi" />
+        </Reveal>
+      </div></section>
+
       <section id="insights" className="section"><div className="wrap"><Reveal className="sectionHead"><div><div className="kicker">Field Notes</div><h2>Sahadan düşünceler.</h2></div><p className="intro">Perakende, ödeme sistemleri, mobil checkout ve yeni nesil mağazacılık üzerine kısa ve net notlar.</p></Reveal><Reveal as="aside" className="insights standaloneInsights">{siteConfig.notes.map(([date,title])=><div className="insight" key={title}><div className="date">{date}</div><h4>{title}</h4><div className="go">↗</div></div>)}</Reveal></div></section>
 
       <section id="career" className="section"><div className="wrap">

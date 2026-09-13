@@ -95,6 +95,9 @@ h1 span{color:var(--red)}
 .nebimToggle{background:none;border:1px solid rgba(13,16,20,.16);padding:14px 22px;font:800 11px/1 Inter,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);cursor:pointer;transition:.25s}
 .nebimToggle:hover{border-color:var(--red);color:var(--red)}
 .whatsappSoon{display:inline-flex;margin-top:16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#c7ccd3;padding:14px 18px;font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.08em}
+.linkedinEmbed{display:flex;justify-content:center}
+.linkedinEmbed iframe{width:100%;max-width:504px;height:753px;border:1px solid var(--line);background:#fff}
+@media(max-width:640px){.linkedinEmbed iframe{height:640px}}
 .ai.aiStandalone{max-width:none;border-radius:0}
 @media(max-width:1000px){.timelineItem{grid-template-columns:1fr}.nebimGrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.nebimGrid{grid-template-columns:1fr}}
